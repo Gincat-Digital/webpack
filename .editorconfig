@@ -1,0 +1,8 @@
+root = true
+indent_style = tab
+indent_size = 1
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 100
+spaces_around_operators = true

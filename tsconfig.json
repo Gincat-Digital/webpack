@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"target": "ESNext",
+		"moduleResolution": "node",
+		"allowJs": false,
+		"strictNullChecks": true,
+	},
+	"include": [
+		"./src/**/*",
+	],
+	"exclude": [
+		"node_modules",
+		"./dist/**/*",
+	]
+}
