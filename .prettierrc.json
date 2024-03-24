@@ -1,6 +1,6 @@
 {
-	"tabWidth": 2,
-	"tabs": true,
+	"tabWidth": 1,
+	"useTabs": true,
 	"semicolos": true,
 	"singleQuote": true,
 	"quoteProps": "as-needed",
@@ -8,5 +8,6 @@
 	"trailingComma": "all",
 	"bracketSpacing": true,
 	"bracketSameLine": false,
-	"arrowParens": "always"
+	"arrowParens": "always",
+	"endOfLine": "crlf"
 }
