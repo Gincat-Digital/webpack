@@ -53,7 +53,6 @@ export class WebpackTools {
 
 		const defaultEntryObject: EntryObject = {
 			[DEFAULT_OUTPUT_FILE_NAME]: path.resolve(
-				__dirname,
 				this.root,
 				DEFAULT_ENTRY_PATH,
 				DEFAULT_ENTRY_FILE_NAME,
@@ -79,7 +78,7 @@ export class WebpackTools {
 		output?: GincatWebpackConfig['output'],
 	): GincatWebpackConfig['output'] {
 		return {
-			path: path.resolve(__dirname, this.root, DEFAULT_OUTPUT_PATH),
+			path: path.resolve(this.root, DEFAULT_OUTPUT_PATH),
 			filename: '[name].bundle.js',
 			...output,
 		};
@@ -96,7 +95,6 @@ export class WebpackTools {
 			extensions: DEFAULT_EXTENSIONS,
 			alias: {
 				[DEFAULT_SRC_ALIAS_NAME]: path.resolve(
-					__dirname,
 					this.root,
 					DEFAULT_SRC_PATH,
 				),
@@ -126,13 +124,13 @@ export class WebpackTools {
 			new CopyPlugin({
 				patterns: [
 					{
-						from: path.resolve(__dirname, this.root, DEFAULT_ASSETS_FOLDER_NAME),
-						to: path.resolve(__dirname, this.root, DEFAULT_DIST_FOLDER_NAME),
+						from: path.resolve(this.root, DEFAULT_ASSETS_FOLDER_NAME),
+						to: path.resolve(this.root, DEFAULT_DIST_FOLDER_NAME),
 						noErrorOnMissing: true,
 					},
 					{
-						from: path.resolve(__dirname, this.root, DEFAULT_LOCALES_FOLDER_NAME),
-						to: path.resolve(__dirname, this.root, DEFAULT_DIST_FOLDER_NAME),
+						from: path.resolve(this.root, DEFAULT_LOCALES_FOLDER_NAME),
+						to: path.resolve(this.root, DEFAULT_DIST_FOLDER_NAME),
 						noErrorOnMissing: true,
 					},
 				],
@@ -161,16 +159,16 @@ export class WebpackTools {
 		const defaultDevServerObject: WebpackDevServerConfig = {
 			watchFiles: [
 				{
-					paths: [path.resolve(__dirname, this.root, DEFAULT_WATCH_PATH)],
+					paths: [path.resolve(this.root, DEFAULT_WATCH_PATH)],
 				},
 			],
 			static: [
 				{
-					directory: path.resolve(__dirname, this.root, DEFAULT_ASSETS_FOLDER_NAME),
+					directory: path.resolve(this.root, DEFAULT_ASSETS_FOLDER_NAME),
 					publicPath: DEFAULT_ASSETS_URL_PATH,
 				},
 				{
-					directory: path.resolve(__dirname, this.root, DEFAULT_LOCALES_FOLDER_NAME),
+					directory: path.resolve(this.root, DEFAULT_LOCALES_FOLDER_NAME),
 					publicPath: DEFAULT_LOCALES_URL_PATH,
 				},
 			],
