@@ -1,15 +1,17 @@
 {
   "name": "gincat-webpack",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "Braian Rosas <braian.rosas@gincat.digital>",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
+    "build": "npx tsc --build",
     "dev": "npx tsc --watch",
     "lint": "npx eslint ./src/**/*.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "./dists/index.js",
+	"type": "module",
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/webpack": "^5.28.5",
@@ -30,6 +32,7 @@
     "mini-css-extract-plugin": "^2.8.1",
     "prettier": "3.2.5",
     "sass-loader": "^14.1.1",
+    "sharp": "^0.33.3",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.3",
