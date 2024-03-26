@@ -1,18 +1,3 @@
-import {
-	DEFAULT_ASSETS_FOLDER_NAME,
-	DEFAULT_ASSETS_URL_PATH,
-	DEFAULT_DIST_FOLDER_NAME,
-	DEFAULT_ENTRY_FILE_NAME,
-	DEFAULT_ENTRY_PATH,
-	DEFAULT_EXTENSIONS,
-	DEFAULT_LOCALES_FOLDER_NAME,
-	DEFAULT_LOCALES_URL_PATH,
-	DEFAULT_OUTPUT_FILE_NAME,
-	DEFAULT_OUTPUT_PATH,
-	DEFAULT_SRC_ALIAS_NAME,
-	DEFAULT_SRC_PATH,
-	DEFAULT_WATCH_PATH,
-} from '../config/defaults';
 import path from 'path';
 import type {
 	GincatWebpackConfig,
@@ -32,6 +17,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import JsonMinimizerPlugin from 'json-minimizer-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import { Constants } from './Constants';
 
 export class WebpackTools {
 	private readonly root: string;
@@ -52,10 +38,10 @@ export class WebpackTools {
 		let entryObject: EntryObject = {};
 
 		const defaultEntryObject: EntryObject = {
-			[DEFAULT_OUTPUT_FILE_NAME]: path.resolve(
+			[Constants.outputFileName]: path.resolve(
 				this.root,
-				DEFAULT_ENTRY_PATH,
-				DEFAULT_ENTRY_FILE_NAME,
+				Constants.entryPath,
+				Constants.entryFileName,
 			),
 		};
 
@@ -78,7 +64,7 @@ export class WebpackTools {
 		output?: GincatWebpackConfig['output'],
 	): GincatWebpackConfig['output'] {
 		return {
-			path: path.resolve(this.root, DEFAULT_OUTPUT_PATH),
+			path: path.resolve(this.root, Constants.outputPath),
 			filename: '[name].bundle.js',
 			...output,
 		};
@@ -92,11 +78,11 @@ export class WebpackTools {
 
 		const defaultResolveObject: ResolveOptions = {
 			cache: true,
-			extensions: DEFAULT_EXTENSIONS,
+			extensions: Constants.extensions,
 			alias: {
-				[DEFAULT_SRC_ALIAS_NAME]: path.resolve(
+				[Constants.srcAliasName]: path.resolve(
 					this.root,
-					DEFAULT_SRC_PATH,
+					Constants.srcPath,
 				),
 			},
 		};
@@ -124,13 +110,13 @@ export class WebpackTools {
 			new CopyPlugin({
 				patterns: [
 					{
-						from: path.resolve(this.root, DEFAULT_ASSETS_FOLDER_NAME),
-						to: path.resolve(this.root, DEFAULT_DIST_FOLDER_NAME),
+						from: path.resolve(this.root, Constants.assetsFolderName),
+						to: path.resolve(this.root, Constants.distFolderName),
 						noErrorOnMissing: true,
 					},
 					{
-						from: path.resolve(this.root, DEFAULT_LOCALES_FOLDER_NAME),
-						to: path.resolve(this.root, DEFAULT_DIST_FOLDER_NAME),
+						from: path.resolve(this.root, Constants.localesFolderName),
+						to: path.resolve(this.root, Constants.distFolderName),
 						noErrorOnMissing: true,
 					},
 				],
@@ -159,17 +145,17 @@ export class WebpackTools {
 		const defaultDevServerObject: WebpackDevServerConfig = {
 			watchFiles: [
 				{
-					paths: [path.resolve(this.root, DEFAULT_WATCH_PATH)],
+					paths: [path.resolve(this.root, Constants.watchPath)],
 				},
 			],
 			static: [
 				{
-					directory: path.resolve(this.root, DEFAULT_ASSETS_FOLDER_NAME),
-					publicPath: DEFAULT_ASSETS_URL_PATH,
+					directory: path.resolve(this.root, Constants.assetsFolderName),
+					publicPath: Constants.assetsUrlPath,
 				},
 				{
-					directory: path.resolve(this.root, DEFAULT_LOCALES_FOLDER_NAME),
-					publicPath: DEFAULT_LOCALES_URL_PATH,
+					directory: path.resolve(this.root, Constants.localesFolderName),
+					publicPath: Constants.localesUrlPath,
 				},
 			],
 			compress: true,
