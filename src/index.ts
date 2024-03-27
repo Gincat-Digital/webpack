@@ -1,3 +1,5 @@
+import './compiler/config';
+
 import { GincatWebpack } from './webpack/GincatWebpack';
 import { WebpackTools } from './webpack/WebpackTools';
 import { Constants } from './webpack/Constants';

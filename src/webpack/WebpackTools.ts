@@ -205,9 +205,9 @@ export class WebpackTools {
 					],
 				},
 				{
-					test: /\.tsx?$/,
+					test: /\.(js|ts)x?$/,
 					exclude: /node_modules/,
-					use: [{ loader: 'ts-loader' }],
+					use: [{ loader: 'babel-loader' }],
 				},
 			],
 		};
