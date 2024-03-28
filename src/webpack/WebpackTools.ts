@@ -11,8 +11,8 @@ import type {
 	WebpackPluginInstance,
 } from 'webpack';
 import type { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
-import { merge } from 'lodash';
-import { DefinePlugin } from 'webpack';
+import { merge } from 'lodash-es';
+import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import JsonMinimizerPlugin from 'json-minimizer-webpack-plugin';
@@ -121,7 +121,7 @@ export class WebpackTools {
 					},
 				],
 			}),
-			new DefinePlugin({}),
+			new webpack.DefinePlugin({}),
 		];
 
 		if (plugins) {
@@ -177,7 +177,7 @@ export class WebpackTools {
 	}
 
 	public getModule(
-		module?: ModuleOptions,
+		modules?: ModuleOptions,
 		defaultConfig?: boolean,
 	): GincatWebpackConfig['module'] {
 		let moduleObject: ModuleOptions = {};
@@ -212,11 +212,11 @@ export class WebpackTools {
 			],
 		};
 
-		if (module) {
+		if (modules) {
 			if (defaultConfig) {
 				moduleObject = defaultModuleObject;
 			}
-			merge(moduleObject, module);
+			merge(moduleObject, modules);
 		} else {
 			moduleObject = defaultModuleObject;
 		}
@@ -286,7 +286,7 @@ export class WebpackTools {
 			],
 		};
 
-		if (module) {
+		if (optimization) {
 			if (defaultConfig) {
 				optimizationObject = defaultOptimizationObject;
 			}
