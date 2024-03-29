@@ -15,7 +15,7 @@ if (argv.config) {
 		const configPath = path.resolve(process.cwd(), argv.config!);
 		const configURL = new URL(configPath).pathname.replace(/\\/g, '/');
 		const config = await import(configURL);
-
+		console.log(config);
 		webpack(config, (err) => {
 			console.log(err);
 		});

@@ -1,13 +1,12 @@
-import { EntryObject } from 'webpack';
 import type { Config, GincatWebpackConfig } from '../types/GincatWebpack.types';
 import { WebpackTools } from './WebpackTools';
 
 export class GincatWebpack {
 	private readonly root: string;
 	private readonly config?: Config;
-	// Default webpack configurations
+
 	private devConfig: GincatWebpackConfig;
-	private readonly prodConfig: GincatWebpackConfig;
+	private prodConfig: GincatWebpackConfig;
 
 	public constructor(root: string, config?: Config) {
 		this.root = root;
@@ -16,7 +15,7 @@ export class GincatWebpack {
 		this.setDevConfig();
 		this.setProdConfig();
 	}
-	
+
 	public get development(): GincatWebpackConfig {
 		return this.devConfig;
 	}
@@ -48,7 +47,7 @@ export class GincatWebpack {
 		const wp = new WebpackTools(this.root, 'production');
 
 		if (this.config) {
-			this.devConfig = {
+			this.prodConfig = {
 				mode: 'production',
 				resolve: wp.getResolve(),
 				module: wp.getModule(),
@@ -59,7 +58,7 @@ export class GincatWebpack {
 				devServer: {},
 			};
 		} else {
-			this.devConfig = wp.config();
+			this.prodConfig = wp.config();
 		}
 	}
 }
