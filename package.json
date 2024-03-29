@@ -1,6 +1,6 @@
 {
   "name": "gincat-webpack",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "author": "Braian Rosas <braian.rosas@gincat.digital>",
   "license": "ISC",
@@ -10,10 +10,14 @@
     "dev": "npx tsc --watch",
     "lint": "npx eslint ./src/**/*.ts"
   },
+  "bin": {
+    "gcwp": "./dist/cli/client.js"
+  },
   "type": "module",
-  "main": "./dists/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "/dist"
+    "dist"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.3.1",
@@ -21,16 +25,17 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "3.2.5",
-    "ts-loader": "^9.5.1"
+    "prettier": "3.2.5"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.24.1",
+    "@types/lodash-es": "^4.17.12",
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
     "@types/babel__core": "^7.20.5",
     "@types/lodash": "^4.17.0",
     "@types/webpack": "^5.28.5",
+    "@types/yargs": "^17.0.32",
     "babel-loader": "^9.1.3",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.10.0",
@@ -41,13 +46,17 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
     "json-minimizer-webpack-plugin": "^5.0.0",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "mini-css-extract-plugin": "^2.8.1",
     "sass-loader": "^14.1.1",
     "sharp": "^0.33.3",
     "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.3",
     "webpack": "^5.91.0",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "yargs": "^17.7.2"
   }
 }
