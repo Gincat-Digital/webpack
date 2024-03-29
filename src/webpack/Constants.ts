@@ -12,7 +12,7 @@ export class Constants {
 	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'js';
 
 	// File names
-	private static ENTRY_FILE_NAME: ConstantVars['ENTRY_FILE_NAME'] = 'App';
+	private static ENTRY_FILE_NAME: ConstantVars['ENTRY_FILE_NAME'] = 'App.tsx';
 	private static OUTPUT_FILE_NAME: ConstantVars['OUTPUT_FILE_NAME'] = 'app';
 
 	// Paths

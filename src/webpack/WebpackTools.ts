@@ -4,6 +4,7 @@ import type {
 	Mode,
 	ModuleOptions,
 	OptimizationOptions,
+	OutputOptions,
 } from '../types/GincatWebpack.types';
 import type {
 	EntryObject,
@@ -61,8 +62,8 @@ export class WebpackTools {
 	}
 
 	public getOutput(
-		output?: GincatWebpackConfig['output'],
-	): GincatWebpackConfig['output'] {
+		output?: OutputOptions,
+	): OutputOptions {
 		return {
 			path: path.resolve(this.root, Constants.outputPath),
 			filename: '[name].bundle.js',

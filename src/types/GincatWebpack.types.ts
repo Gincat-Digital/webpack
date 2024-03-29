@@ -13,8 +13,12 @@ import type {
 export type Mode = 'development' | 'production';
 
 export type Config = {
-	root: string;
+	devServer?: boolean;
+	entries?: EntryObject;
+	output?: GincatWebpackConfig['output'];
 };
+
+export type OutputOptions = WebpackConfig['output'];
 
 export type ModuleOptions = {
 	rules?: Array<RuleSetRule>;
@@ -32,9 +36,10 @@ export type GincatWebpackDevServerConfig = {
 export type GincatWebpackConfig = {
 	mode: Mode;
 	entry: EntryObject;
+	output: OutputOptions;
 	devServer: WebpackDevServerConfig;
 	plugins: Array<WebpackPluginInstance>;
 	module: ModuleOptions;
 	optimization: OptimizationOptions;
-} & Required<Pick<WebpackConfig, 'output' | 'resolve'>> &
+} & Required<Pick<WebpackConfig, 'resolve'>> &
 	WebpackConfig;
