@@ -1,5 +1,6 @@
 import path from 'path';
 import type {
+	EntryOptions,
 	GincatWebpackConfig,
 	Mode,
 	ModuleOptions,
@@ -7,12 +8,11 @@ import type {
 	OutputOptions,
 } from '../types/GincatWebpack.types';
 import type {
-	EntryObject,
 	ResolveOptions,
 	WebpackPluginInstance,
 } from 'webpack';
 import type { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
-import { merge } from 'lodash-es';
+import { merge, transform } from 'lodash-es';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
@@ -33,12 +33,12 @@ export class WebpackTools {
 	private isProd = () => this.mode === 'production';
 
 	public getEntry(
-		entry?: EntryObject,
+		entry?: EntryOptions,
 		defaultConfig?: boolean,
 	): GincatWebpackConfig['entry'] {
-		let entryObject: EntryObject = {};
+		let entryObject: EntryOptions = {};
 
-		const defaultEntryObject: EntryObject = {
+		const defaultEntryObject: EntryOptions = {
 			[Constants.outputFileName]: path.resolve(
 				this.root,
 				Constants.entryPath,
@@ -46,13 +46,21 @@ export class WebpackTools {
 			),
 		};
 
+		const getEntryFinal = (entries: EntryOptions) => {
+			return transform(entries, (result, value, key) => {
+				result[key] = typeof value === 'string'
+					? path.resolve(this.root, value)
+					: value.map((val) => path.resolve(this.root, val));
+			}, {} as EntryOptions);
+		}
+
 		if (entry) {
 			if (defaultConfig) {
 				entryObject = defaultEntryObject;
 			}
 			entryObject = {
 				...entryObject,
-				...entry,
+				...getEntryFinal(entry),
 			};
 		} else {
 			entryObject = defaultEntryObject;

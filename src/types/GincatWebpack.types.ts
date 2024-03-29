@@ -1,5 +1,4 @@
 import type {
-	EntryObject,
 	RuleSetRule,
 	Configuration as WebpackConfig,
 	WebpackPluginInstance,
@@ -14,9 +13,11 @@ export type Mode = 'development' | 'production';
 
 export type Config = {
 	devServer?: boolean;
-	entries?: EntryObject;
+	entries?: EntryOptions;
 	output?: GincatWebpackConfig['output'];
 };
+
+export type EntryOptions = Record<string, string | Array<string>>;
 
 export type OutputOptions = WebpackConfig['output'];
 
@@ -35,7 +36,7 @@ export type GincatWebpackDevServerConfig = {
 
 export type GincatWebpackConfig = {
 	mode: Mode;
-	entry: EntryObject;
+	entry: EntryOptions;
 	output: OutputOptions;
 	devServer: WebpackDevServerConfig;
 	plugins: Array<WebpackPluginInstance>;
