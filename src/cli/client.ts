@@ -14,11 +14,14 @@ if (argv.config) {
 	new Promise(async (resolve) => {
 		const configPath = path.resolve(process.cwd(), argv.config!);
 		const configURL = new URL(configPath).pathname.replace(/\\/g, '/');
-		const config = await import(configURL);
-		console.log(config);
-		webpack(config, (err) => {
-			console.log(err);
+		const config = await import(configURL)
+		
+		webpack(config.default || config.config, (error) => {
+			if (error) {
+				throw new Error(error.message);
+			}
 		});
+
 		resolve(null);
 	});
 }
