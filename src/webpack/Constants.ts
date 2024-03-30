@@ -16,12 +16,12 @@ export class Constants {
 	private static OUTPUT_FILE_NAME: ConstantVars['OUTPUT_FILE_NAME'] = 'app';
 
 	// Paths
-	private static ENTRY_PATH: ConstantVars['ENTRY_PATH'] = `/${this.SRC_FOLDER_NAME}/${this.ENTRY_FOLDER_NAME}`;
-	private static OUTPUT_PATH: ConstantVars['OUTPUT_PATH'] = `/${this.DIST_FOLDER_NAME}/${this.OUTPUT_FOLDER_NAME}`;
-	private static SRC_PATH: ConstantVars['SRC_PATH'] = `/${this.SRC_FOLDER_NAME}`;
-	private static ASSETS_PATH: ConstantVars['ASSETS_PATH'] = `/${this.SRC_FOLDER_NAME}/${this.ASSETS_FOLDER_NAME}`;
-	private static LOCALES_PATH: ConstantVars['LOCALES_PATH'] = `/${this.SRC_FOLDER_NAME}/${this.LOCALES_FOLDER_NAME}`;
-	private static WATCH_PATH: ConstantVars['WATCH_PATH'] = `/${this.SRC_FOLDER_NAME}/**/*`;
+	private static ENTRY_PATH: ConstantVars['ENTRY_PATH'] = `${this.SRC_FOLDER_NAME}/${this.ENTRY_FOLDER_NAME}`;
+	private static OUTPUT_PATH: ConstantVars['OUTPUT_PATH'] = `${this.DIST_FOLDER_NAME}/${this.OUTPUT_FOLDER_NAME}`;
+	private static SRC_PATH: ConstantVars['SRC_PATH'] = `${this.SRC_FOLDER_NAME}`;
+	private static ASSETS_PATH: ConstantVars['ASSETS_PATH'] = `${this.SRC_FOLDER_NAME}/${this.ASSETS_FOLDER_NAME}`;
+	private static LOCALES_PATH: ConstantVars['LOCALES_PATH'] = `${this.SRC_FOLDER_NAME}/${this.LOCALES_FOLDER_NAME}`;
+	private static WATCH_PATH: ConstantVars['WATCH_PATH'] = `${this.SRC_FOLDER_NAME}/**/*`;
 
 	// Extensions
 	private static EXTENSIONS: ConstantVars['EXTENSIONS'] = [
