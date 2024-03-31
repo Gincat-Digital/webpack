@@ -214,7 +214,12 @@ export class WebpackTools {
 					exclude: /node_modules/,
 					use: [
 						{ loader: 'style-loader' },
-						{ loader: MiniCssExtractPlugin.loader },
+						{
+							loader: MiniCssExtractPlugin.loader,
+							options: {
+								esModule: false,
+							},
+						},
 						{ loader: 'css-loader' },
 						{ loader: 'sass-loader' },
 					],
