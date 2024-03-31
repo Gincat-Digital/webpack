@@ -7,16 +7,14 @@ import type {
 	OptimizationOptions,
 	OutputOptions,
 } from '../types/GincatWebpack.types';
-import type {
-	ResolveOptions,
-	WebpackPluginInstance,
-} from 'webpack';
+import type { ResolveOptions, WebpackPluginInstance } from 'webpack';
 import type { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
 import { merge, transform } from 'lodash-es';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import JsonMinimizerPlugin from 'json-minimizer-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { Constants } from './Constants';
 
@@ -47,12 +45,17 @@ export class WebpackTools {
 		};
 
 		const getEntryFinal = (entries: EntryOptions) => {
-			return transform(entries, (result, value, key) => {
-				result[key] = typeof value === 'string'
-					? path.resolve(this.root, value)
-					: value.map((val) => path.resolve(this.root, val));
-			}, {} as EntryOptions);
-		}
+			return transform(
+				entries,
+				(result, value, key) => {
+					result[key] =
+						typeof value === 'string'
+							? path.resolve(this.root, value)
+							: value.map((val) => path.resolve(this.root, val));
+				},
+				{} as EntryOptions,
+			);
+		};
 
 		if (entry) {
 			if (defaultConfig) {
@@ -69,9 +72,7 @@ export class WebpackTools {
 		return entryObject;
 	}
 
-	public getOutput(
-		output?: OutputOptions,
-	): OutputOptions {
+	public getOutput(output?: OutputOptions): OutputOptions {
 		return {
 			path: path.resolve(this.root, Constants.outputPath),
 			filename: '[name].bundle.js',
@@ -89,10 +90,7 @@ export class WebpackTools {
 			cache: true,
 			extensions: Constants.extensions,
 			alias: {
-				[Constants.srcAliasName]: path.resolve(
-					this.root,
-					Constants.srcPath,
-				),
+				[Constants.srcAliasName]: path.resolve(this.root, Constants.srcPath),
 			},
 		};
 
@@ -116,6 +114,14 @@ export class WebpackTools {
 
 		const defaultPluginsArray: Array<WebpackPluginInstance> = [
 			new MiniCssExtractPlugin(),
+			new HtmlWebpackPlugin({
+				inject: 'body',
+				template: path.resolve(
+					this.root,
+					Constants.htmlPath,
+					Constants.htmlFileName,
+				),
+			}),
 			new CopyPlugin({
 				patterns: [
 					{
@@ -217,16 +223,16 @@ export class WebpackTools {
 					test: /\.(js|ts)x?$/,
 					exclude: /node_modules/,
 					use: [
-						{ 
-							loader: 'babel-loader' ,
+						{
+							loader: 'babel-loader',
 							options: {
 								presets: [
 									'@babel/preset-env',
-									'@babel/preset-react', 
+									'@babel/preset-react',
 									'@babel/preset-typescript',
-								]
-							}
-						}
+								],
+							},
+						},
 					],
 				},
 			],

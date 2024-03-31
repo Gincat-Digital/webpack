@@ -10,10 +10,12 @@ export class Constants {
 	private static ENTRY_FOLDER_NAME: ConstantVars['ENTRY_FOLDER_NAME'] = 'app';
 	private static DIST_FOLDER_NAME: ConstantVars['DIST_FOLDER_NAME'] = 'dist';
 	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'js';
+	private static HTML_FOLDER_NAME: ConstantVars['HTML_FOLDER_NAME'] = 'html';
 
 	// File names
 	private static ENTRY_FILE_NAME: ConstantVars['ENTRY_FILE_NAME'] = 'App.tsx';
 	private static OUTPUT_FILE_NAME: ConstantVars['OUTPUT_FILE_NAME'] = 'app';
+	private static HTML_FILE_NAME: ConstantVars['HTML_FILE_NAME'] = 'index.html';
 
 	// Paths
 	private static ENTRY_PATH: ConstantVars['ENTRY_PATH'] = `${this.SRC_FOLDER_NAME}/${this.ENTRY_FOLDER_NAME}`;
@@ -21,6 +23,7 @@ export class Constants {
 	private static SRC_PATH: ConstantVars['SRC_PATH'] = `${this.SRC_FOLDER_NAME}`;
 	private static ASSETS_PATH: ConstantVars['ASSETS_PATH'] = `${this.SRC_FOLDER_NAME}/${this.ASSETS_FOLDER_NAME}`;
 	private static LOCALES_PATH: ConstantVars['LOCALES_PATH'] = `${this.SRC_FOLDER_NAME}/${this.LOCALES_FOLDER_NAME}`;
+	private static HTML_PATH: ConstantVars['WATCH_PATH'] = `${this.SRC_FOLDER_NAME}/${this.HTML_FOLDER_NAME}`;
 	private static WATCH_PATH: ConstantVars['WATCH_PATH'] = `${this.SRC_FOLDER_NAME}/**/*`;
 
 	// Extensions
@@ -68,12 +71,20 @@ export class Constants {
 		return this.OUTPUT_FOLDER_NAME;
 	}
 
+	public static get htmlFolderName(): string {
+		return this.HTML_FOLDER_NAME;
+	}
+
 	public static get entryFileName(): string {
 		return this.ENTRY_FILE_NAME;
 	}
 
 	public static get outputFileName(): string {
 		return this.OUTPUT_FILE_NAME;
+	}
+
+	public static get htmlFileName(): string {
+		return this.HTML_FILE_NAME;
 	}
 
 	public static get entryPath(): string {
@@ -94,6 +105,10 @@ export class Constants {
 
 	public static get localesPath(): string {
 		return this.LOCALES_PATH;
+	}
+
+	public static get htmlPath(): string {
+		return this.HTML_PATH;
 	}
 
 	public static get watchPath(): string {

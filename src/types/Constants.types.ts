@@ -6,10 +6,12 @@ export type ConstantVars = {
 		ENTRY_FOLDER_NAME: string;
 		DIST_FOLDER_NAME: string;
 		OUTPUT_FOLDER_NAME: string;
+		HTML_FOLDER_NAME: string;
 	
 		// File names
 		ENTRY_FILE_NAME: string;
 		OUTPUT_FILE_NAME: string;
+		HTML_FILE_NAME: string;
 	
 		// Paths
 		ENTRY_PATH: string;
@@ -18,6 +20,7 @@ export type ConstantVars = {
 		ASSETS_PATH: string;
 		LOCALES_PATH: string;
 		WATCH_PATH: string;
+		HTML_PATH: string;
 	
 		// Extensions
 		EXTENSIONS: Array<string>;
