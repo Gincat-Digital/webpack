@@ -36,7 +36,7 @@ export class GincatWebpack {
 				optimization: wp.getOptimization(),
 				entry: wp.getEntry(this.config.entries),
 				output: wp.getOutput(this.config.output),
-				devServer: this.config.devServer ? wp.getDevServer() : {},
+				devServer: this.config.devServer ? wp.getDevServer() : undefined,
 			};
 		} else {
 			this.devConfig = wp.config();
@@ -55,7 +55,6 @@ export class GincatWebpack {
 				optimization: wp.getOptimization(),
 				entry: wp.getEntry(this.config.entries),
 				output: wp.getOutput(this.config.output),
-				devServer: {},
 			};
 		} else {
 			this.prodConfig = wp.config();

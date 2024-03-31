@@ -38,7 +38,7 @@ export type GincatWebpackConfig = {
 	mode: Mode;
 	entry: EntryOptions;
 	output: OutputOptions;
-	devServer: WebpackDevServerConfig;
+	devServer?: WebpackDevServerConfig;
 	plugins: Array<WebpackPluginInstance>;
 	module: ModuleOptions;
 	optimization: OptimizationOptions;

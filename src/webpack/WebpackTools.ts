@@ -182,7 +182,7 @@ export class WebpackTools {
 			devServerObject = defaultDevServerObject;
 		}
 
-		return this.isDev() ? devServerObject : {};
+		return this.isDev() ? devServerObject : undefined;
 	}
 
 	public getModule(
