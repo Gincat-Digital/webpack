@@ -125,13 +125,21 @@ export class WebpackTools {
 			new CopyPlugin({
 				patterns: [
 					{
-						from: path.resolve(this.root, Constants.assetsFolderName),
-						to: path.resolve(this.root, Constants.distFolderName),
+						from: path.resolve(this.root, Constants.assetsPath),
+						to: path.resolve(
+							this.root,
+							Constants.distFolderName,
+							Constants.assetsFolderName,
+						),
 						noErrorOnMissing: true,
 					},
 					{
-						from: path.resolve(this.root, Constants.localesFolderName),
-						to: path.resolve(this.root, Constants.distFolderName),
+						from: path.resolve(this.root, Constants.localesPath),
+						to: path.resolve(
+							this.root,
+							Constants.distFolderName,
+							Constants.localesFolderName,
+						),
 						noErrorOnMissing: true,
 					},
 				],
@@ -165,11 +173,11 @@ export class WebpackTools {
 			],
 			static: [
 				{
-					directory: path.resolve(this.root, Constants.assetsFolderName),
+					directory: path.resolve(this.root, Constants.assetsPath),
 					publicPath: Constants.assetsUrlPath,
 				},
 				{
-					directory: path.resolve(this.root, Constants.localesFolderName),
+					directory: path.resolve(this.root, Constants.localesPath),
 					publicPath: Constants.localesUrlPath,
 				},
 			],
@@ -220,8 +228,26 @@ export class WebpackTools {
 								esModule: false,
 							},
 						},
-						{ loader: 'css-loader' },
+						{
+							loader: 'css-loader',
+							options: {
+								url: false,
+							},
+						},
 						{ loader: 'sass-loader' },
+					],
+				},
+				{
+					test: /\.(woff(2)?|ttf|eot|svg)$/,
+					exclude: /node_modules/,
+					type: 'asset/resource',
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+								emitFile: false,
+							},
+						},
 					],
 				},
 				{

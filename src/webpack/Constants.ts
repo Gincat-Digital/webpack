@@ -11,6 +11,7 @@ export class Constants {
 	private static DIST_FOLDER_NAME: ConstantVars['DIST_FOLDER_NAME'] = 'dist';
 	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'js';
 	private static HTML_FOLDER_NAME: ConstantVars['HTML_FOLDER_NAME'] = 'html';
+	private static FONTS_FOLDER_NAME: ConstantVars['FONTS_FOLDER_NAME'] = 'fonts';
 
 	// File names
 	private static ENTRY_FILE_NAME: ConstantVars['ENTRY_FILE_NAME'] = 'App.tsx';
@@ -43,9 +44,9 @@ export class Constants {
 
 	// URL paths
 	private static ASSETS_URL_PATH: ConstantVars['ASSETS_URL_PATH'] =
-		'/private static';
+		'/assets';
 	private static LOCALES_URL_PATH: ConstantVars['LOCALES_URL_PATH'] =
-		'/private static';
+		'/locales';
 
 	public static get srcFolderName(): string {
 		return this.SRC_FOLDER_NAME;
@@ -73,6 +74,10 @@ export class Constants {
 
 	public static get htmlFolderName(): string {
 		return this.HTML_FOLDER_NAME;
+	}
+
+	public static get fontsFolderName(): string {
+		return this.FONTS_FOLDER_NAME;
 	}
 
 	public static get entryFileName(): string {

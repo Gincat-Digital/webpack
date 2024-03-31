@@ -7,6 +7,7 @@ export type ConstantVars = {
 		DIST_FOLDER_NAME: string;
 		OUTPUT_FOLDER_NAME: string;
 		HTML_FOLDER_NAME: string;
+		FONTS_FOLDER_NAME: string;
 	
 		// File names
 		ENTRY_FILE_NAME: string;
