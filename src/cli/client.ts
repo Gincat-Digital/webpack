@@ -14,15 +14,19 @@ type Argvs = {
 const argv: Argvs = yargs(hideBin(process.argv)).argv;
 
 if (argv.config) {
-	new Promise(async (resolve) => {
+	(async () => {
 		const configPath = path.resolve(process.cwd(), argv.config!);
 		const configURL = new URL(configPath).pathname.replace(/\\/g, '/');
-		
+
 		const config: GincatWebpackConfig = await import(configURL).then(
 			(_config) => {
 				return _config.default || _config.config;
 			},
 		);
+
+		if (!config) {
+			throw new Error(`No webpack configuration found at: ${configURL}`);
+		}
 
 		if (config.devServer) {
 			const server = new WebpackDevServer(
@@ -49,7 +53,5 @@ if (argv.config) {
 				}
 			});
 		}
-
-		resolve(null);
-	});
+	})();
 }
