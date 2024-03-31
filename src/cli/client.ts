@@ -54,4 +54,6 @@ if (argv.config) {
 			});
 		}
 	})();
+} else {
+	throw new Error(`No config path was found in client options, please provide '--config' flag with its respective config file ubication. For example: 'gcwp --config=path/to/webpack.config.js'`);
 }
