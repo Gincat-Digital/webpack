@@ -75,7 +75,7 @@ export class WebpackTools {
 	public getOutput(output?: OutputOptions): OutputOptions {
 		return {
 			path: path.resolve(this.root, Constants.outputPath),
-			filename: '[name].bundle.js',
+			filename: '[name].js',
 			...output,
 		};
 	}

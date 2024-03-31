@@ -9,7 +9,7 @@ export class Constants {
 		'locales';
 	private static ENTRY_FOLDER_NAME: ConstantVars['ENTRY_FOLDER_NAME'] = 'app';
 	private static DIST_FOLDER_NAME: ConstantVars['DIST_FOLDER_NAME'] = 'dist';
-	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'js';
+	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'bundles';
 	private static HTML_FOLDER_NAME: ConstantVars['HTML_FOLDER_NAME'] = 'html';
 	private static FONTS_FOLDER_NAME: ConstantVars['FONTS_FOLDER_NAME'] = 'fonts';
 
