@@ -19,7 +19,7 @@ export class GincatWebpack {
 	public get development(): GincatWebpackConfig {
 		return this.devConfig;
 	}
-	
+
 	public get production(): GincatWebpackConfig {
 		return this.prodConfig;
 	}
@@ -42,7 +42,7 @@ export class GincatWebpack {
 			this.devConfig = wp.config();
 		}
 	}
-	
+
 	private setProdConfig(): void {
 		const wp = new WebpackTools(this.root, 'production');
 

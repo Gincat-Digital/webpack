@@ -11,12 +11,6 @@ import type {
 
 export type Mode = 'development' | 'production';
 
-export type Config = {
-	devServer?: boolean;
-	entries?: EntryOptions;
-	output?: GincatWebpackConfig['output'];
-};
-
 export type EntryOptions = Record<string, string | Array<string>>;
 
 export type OutputOptions = WebpackConfig['output'];
@@ -44,3 +38,9 @@ export type GincatWebpackConfig = {
 	optimization: OptimizationOptions;
 } & Required<Pick<WebpackConfig, 'resolve'>> &
 	WebpackConfig;
+
+export type Config = {
+	devServer?: boolean;
+	entries?: EntryOptions;
+	output?: GincatWebpackConfig['output'];
+};

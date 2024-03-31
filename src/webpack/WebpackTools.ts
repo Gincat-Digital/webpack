@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import path from 'path';
 import type {
 	EntryOptions,
@@ -7,16 +8,20 @@ import type {
 	OptimizationOptions,
 	OutputOptions,
 } from '../types/GincatWebpack.types';
-import type { ResolveOptions, WebpackPluginInstance } from 'webpack';
+import webpack, {
+	type ResolveOptions,
+	type WebpackPluginInstance,
+} from 'webpack';
 import type { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
 import { merge, transform } from 'lodash-es';
-import webpack from 'webpack';
+import { Constants } from './Constants';
+/* eslint-disable @typescript-eslint/naming-convention */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import JsonMinimizerPlugin from 'json-minimizer-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
-import { Constants } from './Constants';
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export class WebpackTools {
 	private readonly root: string;
@@ -27,8 +32,8 @@ export class WebpackTools {
 		this.mode = mode;
 	}
 
-	private isDev = () => this.mode === 'development';
-	private isProd = () => this.mode === 'production';
+	private readonly isDev = (): boolean => this.mode === 'development';
+	private readonly isProd = (): boolean => this.mode === 'production';
 
 	public getEntry(
 		entry?: EntryOptions,
@@ -44,7 +49,7 @@ export class WebpackTools {
 			),
 		};
 
-		const getEntryFinal = (entries: EntryOptions) => {
+		const getEntryFinal = (entries: EntryOptions): EntryOptions => {
 			return transform(
 				entries,
 				(result, value, key) => {
@@ -208,18 +213,18 @@ export class WebpackTools {
 		const defaultModuleObject: ModuleOptions = {
 			rules: [
 				{
-					test: /\.json$/,
-					exclude: /node_modules/,
+					test: /\.json$/u,
+					exclude: /node_modules/u,
 					type: 'asset/resource',
 				},
 				{
-					test: /\.(jpe?g|png|gif|svg)$/,
-					exclude: /node_modules/,
+					test: /\.(jpe?g|png|gif|svg)$/u,
+					exclude: /node_modules/u,
 					type: 'asset',
 				},
 				{
-					test: /\.(c|s(c|a))ss$/,
-					exclude: /node_modules/,
+					test: /\.(c|s(c|a))ss$/u,
+					exclude: /node_modules/u,
 					use: [
 						{ loader: 'style-loader' },
 						{
@@ -238,8 +243,8 @@ export class WebpackTools {
 					],
 				},
 				{
-					test: /\.(woff(2)?|ttf|eot|svg)$/,
-					exclude: /node_modules/,
+					test: /\.(woff(2)?|ttf|eot|svg)$/u,
+					exclude: /node_modules/u,
 					type: 'asset/resource',
 					use: [
 						{
@@ -251,8 +256,8 @@ export class WebpackTools {
 					],
 				},
 				{
-					test: /\.(js|ts)x?$/,
-					exclude: /node_modules/,
+					test: /\.(js|ts)x?$/u,
+					exclude: /node_modules/u,
 					use: [
 						{
 							loader: 'babel-loader',

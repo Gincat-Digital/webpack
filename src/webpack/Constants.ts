@@ -1,6 +1,8 @@
-import { ConstantVars } from '../types/Constants.types';
+import type { ConstantVars } from '../types/Constants.types';
 
 export class Constants {
+	/* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/prefer-readonly */
+
 	// Folder names
 	private static SRC_FOLDER_NAME: ConstantVars['SRC_FOLDER_NAME'] = 'src';
 	private static ASSETS_FOLDER_NAME: ConstantVars['ASSETS_FOLDER_NAME'] =
@@ -9,7 +11,8 @@ export class Constants {
 		'locales';
 	private static ENTRY_FOLDER_NAME: ConstantVars['ENTRY_FOLDER_NAME'] = 'app';
 	private static DIST_FOLDER_NAME: ConstantVars['DIST_FOLDER_NAME'] = 'dist';
-	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] = 'bundles';
+	private static OUTPUT_FOLDER_NAME: ConstantVars['OUTPUT_FOLDER_NAME'] =
+		'bundles';
 	private static HTML_FOLDER_NAME: ConstantVars['HTML_FOLDER_NAME'] = 'html';
 	private static FONTS_FOLDER_NAME: ConstantVars['FONTS_FOLDER_NAME'] = 'fonts';
 
@@ -43,10 +46,10 @@ export class Constants {
 	private static SRC_ALIAS_NAME: ConstantVars['SRC_ALIAS_NAME'] = '@';
 
 	// URL paths
-	private static ASSETS_URL_PATH: ConstantVars['ASSETS_URL_PATH'] =
-		'/assets';
-	private static LOCALES_URL_PATH: ConstantVars['LOCALES_URL_PATH'] =
-		'/locales';
+	private static ASSETS_URL_PATH: ConstantVars['ASSETS_URL_PATH'] = '/assets';
+	private static LOCALES_URL_PATH: ConstantVars['LOCALES_URL_PATH'] = '/locales';
+
+	/* eslint-enable @typescript-eslint/naming-convention, @typescript-eslint/prefer-readonly */
 
 	public static get srcFolderName(): string {
 		return this.SRC_FOLDER_NAME;
@@ -139,6 +142,7 @@ export class Constants {
 	public static setVar(vars: ConstantVars): void {
 		for (const key in vars) {
 			if (Object.hasOwn(this, key)) {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 				this[key] = vars[key];
 			}
 		}
