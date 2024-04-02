@@ -2,9 +2,31 @@
   "name": "gincat-webpack",
   "version": "0.0.1",
   "description": "",
-  "author": "Braian Rosas <braian.rosas@gincat.digital>",
-  "license": "ISC",
-  "keywords": [],
+  "author": "Braian Rosas <brdevok@outlook.com> (https://github.com/brdevok)",
+  "license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Gincat-Digital/webpack/issues"
+  },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Gincat-Digital/webpack"
+  },
+  "keywords": [
+		"webpack",
+		"webpack-configuration",
+    "webpack-tools",
+    "react",
+    "frontend",
+    "development",
+    "production",
+    "optimization",
+    "dev-server",
+    "image-optimization",
+    "json-optimization",
+    "customizable",
+    "cli",
+    "configuration"
+	],
   "scripts": {
     "build": "npx tsc --build",
     "dev": "npx tsc --watch",
