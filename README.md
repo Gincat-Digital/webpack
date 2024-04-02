@@ -114,6 +114,7 @@ import gincatWebpack from './gincat-webpack';
 export default {
 	...gincatWebpack.development,
 	entry: gincatWebpack.getEntry({ app2: 'src/app2/App2.tsx' }, true), // The second parameter allow yo include the default config
+};
 
 // Output:
 /* -------------
@@ -122,7 +123,6 @@ entry: {
 	app2: 'src/app2/App2.tsx',
 } 
 ------------- */
-};
 ```
 
 ### Adding Plugins
