@@ -62,12 +62,10 @@ To start the webpack dev server or build your project, add the following command
 
 ```json
 {
-	// ...
 	"scripts": {
-    "dev": "gcwp --config=webpack.dev.js",
-    "build": "gcwp --config=webpack.prod.js"
-  }
-	// ...
+		"dev": "gcwp --config=webpack.dev.js",
+		"build": "gcwp --config=webpack.prod.js"
+	}
 }
 ```
 
@@ -117,14 +115,13 @@ export default {
 	...gincatWebpack.development,
 	entry: gincatWebpack.getEntry({ app2: 'src/app2/App2.tsx' }, true), // The second parameter allow yo include the default config
 
-/* Output:
-
+// Output:
+/* -------------
 entry: {
 	app: 'src/app/App.tsx',
 	app2: 'src/app2/App2.tsx',
 } 
-
-*/
+------------- */
 };
 ```
 
@@ -161,9 +158,9 @@ Initialize a new instance.
 
 #### `config`
  
-	- `devServer (boolean)`: Enable or disable dev server (default: `true`).
-	- `entries (EntryOptions)`: Overrides default entry configuration.
-	- `output (OutputOptions)`: Overrides default output configuration.
+- `devServer (boolean)`: Enable or disable dev server (default: `true`).
+- `entries (EntryOptions)`: Overrides default entry configuration.
+- `output (OutputOptions)`: Overrides default output configuration.
 
 ---
 
