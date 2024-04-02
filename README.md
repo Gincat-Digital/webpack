@@ -23,7 +23,7 @@ Once installed, you can use the provided CLI tool to start the development serve
 
 ### Initial configuration
 
-To build your project using the provided webpack configurations, run the following command:
+To build your project using the provided webpack configurations, create the following files:
 
 ```typescript
 // gincat-webpack.js
@@ -35,7 +35,7 @@ import { fileURLToPath } from 'url';
 // This is because `__dirname` is undefined during client instances.
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default new GincatWebpack(path.resolve(__dirname, '../'));
+export default new GincatWebpack(path.resolve(__dirname, '../') /* Project root */);
 ```
 
 ```javascript
