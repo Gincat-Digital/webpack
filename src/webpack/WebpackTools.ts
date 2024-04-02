@@ -121,6 +121,7 @@ export class WebpackTools {
 			new MiniCssExtractPlugin(),
 			new HtmlWebpackPlugin({
 				inject: 'body',
+				publicPath: Constants.htmlPublicPath,
 				template: path.resolve(
 					this.root,
 					Constants.htmlPath,
@@ -186,6 +187,7 @@ export class WebpackTools {
 					publicPath: Constants.localesUrlPath,
 				},
 			],
+			historyApiFallback: true,
 			compress: true,
 			hot: true,
 			open: true,

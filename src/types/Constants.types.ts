@@ -23,6 +23,7 @@ export type ConstantVars = {
 	LOCALES_PATH: string;
 	WATCH_PATH: string;
 	HTML_PATH: string;
+	HTML_PUBLIC_PATH: string;
 
 	// Extensions
 	EXTENSIONS: Array<string>;

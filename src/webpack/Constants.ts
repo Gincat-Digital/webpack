@@ -27,7 +27,8 @@ export class Constants {
 	private static SRC_PATH: ConstantVars['SRC_PATH'] = `${this.SRC_FOLDER_NAME}`;
 	private static ASSETS_PATH: ConstantVars['ASSETS_PATH'] = `${this.SRC_FOLDER_NAME}/${this.ASSETS_FOLDER_NAME}`;
 	private static LOCALES_PATH: ConstantVars['LOCALES_PATH'] = `${this.SRC_FOLDER_NAME}/${this.LOCALES_FOLDER_NAME}`;
-	private static HTML_PATH: ConstantVars['WATCH_PATH'] = `${this.SRC_FOLDER_NAME}/${this.HTML_FOLDER_NAME}`;
+	private static HTML_PATH: ConstantVars['HTML_PATH'] = `${this.SRC_FOLDER_NAME}/${this.HTML_FOLDER_NAME}`;
+	private static HTML_PUBLIC_PATH: ConstantVars['HTML_PUBLIC_PATH'] = `/`;
 	private static WATCH_PATH: ConstantVars['WATCH_PATH'] = `${this.SRC_FOLDER_NAME}/**/*`;
 
 	// Extensions
@@ -117,6 +118,10 @@ export class Constants {
 
 	public static get htmlPath(): string {
 		return this.HTML_PATH;
+	}
+
+	public static get htmlPublicPath(): string {
+		return this.HTML_PUBLIC_PATH;
 	}
 
 	public static get watchPath(): string {
