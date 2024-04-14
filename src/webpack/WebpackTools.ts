@@ -13,8 +13,9 @@ import webpack, {
 	type WebpackPluginInstance,
 } from 'webpack';
 import type { Configuration as WebpackDevServerConfig } from 'webpack-dev-server';
-import { merge, transform } from 'lodash-es';
+import { transform } from 'lodash-es';
 import { Constants } from './Constants';
+import { mergeConfig } from '../utils/mergeConfig';
 /* eslint-disable @typescript-eslint/naming-convention */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
@@ -103,7 +104,7 @@ export class WebpackTools {
 			if (defaultConfig) {
 				resolveObject = defaultResolveObject;
 			}
-			merge(resolveObject, resolve);
+			resolveObject = mergeConfig(resolveObject, resolve);
 		} else {
 			resolveObject = defaultResolveObject;
 		}
@@ -198,7 +199,7 @@ export class WebpackTools {
 			if (defaultConfig) {
 				devServerObject = defaultDevServerObject;
 			}
-			merge(devServerObject, devServer);
+			devServerObject = mergeConfig(devServerObject, devServer);
 		} else {
 			devServerObject = defaultDevServerObject;
 		}
@@ -280,7 +281,7 @@ export class WebpackTools {
 			if (defaultConfig) {
 				moduleObject = defaultModuleObject;
 			}
-			merge(moduleObject, modules);
+			moduleObject = mergeConfig(moduleObject, modules);
 		} else {
 			moduleObject = defaultModuleObject;
 		}
@@ -354,7 +355,7 @@ export class WebpackTools {
 			if (defaultConfig) {
 				optimizationObject = defaultOptimizationObject;
 			}
-			merge(optimizationObject, optimization);
+			optimizationObject = mergeConfig(optimizationObject, optimization);
 		} else {
 			optimizationObject = defaultOptimizationObject;
 		}

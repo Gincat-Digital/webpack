@@ -26,34 +26,29 @@ Once installed, you can use the provided CLI tool to start the development serve
 To build your project using the provided webpack configurations, create the following files:
 
 ```typescript
-// gincat-webpack.js
+// gcwp.js
 
 import GincatWebpack from '@gincat-digital/webpack';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-// This is because `__dirname` is undefined during client instances.
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-export default new GincatWebpack(path.resolve(__dirname, '../') /* Project root */);
+export default new GincatWebpack(process.cwd()) /* Project root */);
 ```
 
 ```javascript
 // webpack.dev.js
 
-import gincatWebpack from './gincat-webpack';
+import gcwp from './gcwp';
 
 // Default development configuration
-export default gincatWebpack.development;
+export default gcwp.development;
 ```
 
 ```javascript
 // webpack.prod.js
 
-import gincatWebpack from './gincat-webpack';
+import gcwp from './gcwp';
 
 // Default production configuration
-export default gincatWebpack.prod;
+export default gcwp.prod;
 ```
 
 ### Using the client tool
@@ -92,11 +87,11 @@ or
 ```javascript
 // webpack.dev.js
 
-import gincatWebpack from './gincat-webpack';
+import gcwp from './gcwp';
 
 // Default development configuration
 export default {
-	...gincatWebpack.development,
+	...gcwp.development,
 	entries: {
 		main: 'src/App.tsx',
 	},
@@ -108,12 +103,15 @@ You can also include multiple entries without overriding the default:
 ```javascript
 // webpack.dev.js
 
-import gincatWebpack from './gincat-webpack';
+import gcwp from './gcwp';
 
 // Default development configuration
 export default {
-	...gincatWebpack.development,
-	entry: gincatWebpack.getEntry({ app2: 'src/app2/App2.tsx' }, true), // The second parameter allow yo include the default config
+	...gcwp.development,
+	entry: {
+		...gcwp.development.entry,
+		app2: 'src/app2/App2.tsx',
+	},
 };
 
 // Output:
@@ -132,20 +130,30 @@ You can add webpack plugins to enhance the functionality of your build process. 
 ```javascript
 // webpack.dev.js
 
-import gincatWebpack from './gincat-webpack';
+import gcwp from './gcwp';
 import MyWebpackPlugin from 'my-webpack-plugin';
 
 // Default development configuration
 export default {
-	...gincatWebpack.development,
+	...gcwp.development,
 	plugins: [
-		...gincatWebpack.getPlugins(),
+		...gcwp.development.plugins,
 		new MyWebpackPlugin(),
 	],
 };
 ```
 
 ## `GincatWebpack` API
+
+### `development`
+
+This method returns the default webpack configuration for development.
+
+### `production`
+
+This method returns the default webpack configuration for production.
+
+## `WebpackTools` API
 
 ### `constructor`
 
